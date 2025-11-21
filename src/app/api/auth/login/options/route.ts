@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const options = await generateAuthenticationOptions({
-        rpID: 'localhost',
+        rpID: process.env.NEXT_PUBLIC_RP_ID || 'localhost',
         allowCredentials: user?.authenticators.map((authenticator) => ({
             id: authenticator.credentialID,
             type: 'public-key',

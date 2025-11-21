@@ -35,8 +35,8 @@ export async function POST(request: Request) {
         verification = await verifyAuthenticationResponse({
             response,
             expectedChallenge: challenge,
-            expectedOrigin: 'http://localhost:3000',
-            expectedRPID: 'localhost',
+            expectedOrigin: process.env.NEXT_PUBLIC_ORIGIN || 'http://localhost:3000',
+            expectedRPID: process.env.NEXT_PUBLIC_RP_ID || 'localhost',
             authenticator: {
                 credentialID: authenticator.credentialID,
                 credentialPublicKey: new Uint8Array(authenticator.credentialPublicKey),
