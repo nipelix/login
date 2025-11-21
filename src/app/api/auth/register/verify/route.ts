@@ -34,8 +34,8 @@ export async function POST(request: Request) {
         verification = await verifyRegistrationResponse({
             response,
             expectedChallenge: challenge,
-            expectedOrigin: 'http://localhost:3000', // Change in production
-            expectedRPID: 'localhost',
+            expectedOrigin: process.env.NEXT_PUBLIC_ORIGIN || 'http://localhost:3000',
+            expectedRPID: process.env.NEXT_PUBLIC_RP_ID || 'localhost',
         });
     } catch (error) {
         console.error(error);
